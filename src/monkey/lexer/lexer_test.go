@@ -25,4 +25,18 @@ func TestNextToken(t *testing.T) {
 	}
 
 	l := New(input)
+
+	for i, tt := range tests {
+		tok := l.NextToken()
+
+		if tok.Type != tt.expectedType {
+			t.Fatalf("tests[%d] - wrong tokenType. Expected=%q, got=%q",
+				i, tt.expectedType, tok.Type)
+		}
+
+		if tok.Literal != tt.expectedLiteral {
+			t.Fataf("tests[%d] - wrong Literal. Expected=%q, got=%q",
+				i, tt.expectedLiteral, tok.Literal)
+		}
+	}
 }
