@@ -7,7 +7,7 @@ import (
 )
 
 func TestNextToken(t *testing.T) {
-	input := `=+(){},:`
+	input := `=+(){},;`
 
 	tests := []struct {
 		expectedType    token.TokenType
@@ -35,7 +35,7 @@ func TestNextToken(t *testing.T) {
 		}
 
 		if tok.Literal != tt.expectedLiteral {
-			t.Fataf("tests[%d] - wrong Literal. Expected=%q, got=%q",
+			t.Fatalf("tests[%d] - wrong Literal. Expected=%q, got=%q",
 				i, tt.expectedLiteral, tok.Literal)
 		}
 	}
